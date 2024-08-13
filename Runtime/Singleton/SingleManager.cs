@@ -28,36 +28,36 @@ namespace KC
             }
         }
         
-        public T AddSingleton<T>() where T : ISingleton, ISingletonAwake
+        public T AddSingleton<T>() where T : ISingleton, ISingletonAwake,new()
         {
-            T singleton = Activator.CreateInstance<T>();
+            T singleton = new T();
             singleton.Awake();
 
             AddSingleton(singleton);
             return singleton;
         }
         
-        public T AddSingleton<T, A>(A a) where T : ISingleton, ISingletonAwake<A>
+        public T AddSingleton<T, A>(A a) where T : ISingleton, ISingletonAwake<A>,new()
         {
-            T singleton = Activator.CreateInstance<T>();
+            T singleton = new T();
             singleton.Awake(a);
 
             AddSingleton(singleton);
             return singleton;
         }
         
-        public T AddSingleton<T, A, B>(A a, B b) where T : ISingleton, ISingletonAwake<A, B>
+        public T AddSingleton<T, A, B>(A a, B b) where T : ISingleton, ISingletonAwake<A, B>,new()
         {
-            T singleton = Activator.CreateInstance<T>();
+            T singleton = new T();
             singleton.Awake(a, b);
 
             AddSingleton(singleton);
             return singleton;
         }
         
-        public T AddSingleton<T, A, B, C>(A a, B b, C c) where T : ISingleton, ISingletonAwake<A, B, C>
+        public T AddSingleton<T, A, B, C>(A a, B b, C c) where T : ISingleton, ISingletonAwake<A, B, C>,new()
         {
-            T singleton = Activator.CreateInstance<T>();
+            T singleton = new T();
             singleton.Awake(a, b, c);
 
             AddSingleton(singleton);

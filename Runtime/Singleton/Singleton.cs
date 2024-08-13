@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace KC
+﻿namespace KC
 {
     public abstract class Singleton<T> : ISingleton  where T : Singleton<T>
     {

@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace KC
+﻿namespace KC
 {
     public interface ILateUpdate
     {
-        void Awake();
+        void LateUpdate();
     }
 }

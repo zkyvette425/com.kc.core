@@ -20,11 +20,7 @@ namespace KC
         private DateTime dt;
         
         public long FrameTime { get; private set; }
-
-        private TimeInfo()
-        {
-            
-        }
+        
         
         public void Awake()
         {

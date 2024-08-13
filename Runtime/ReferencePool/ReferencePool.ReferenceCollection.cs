@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KC
 {
-public static partial class ReferencePool
+    public static partial class ReferencePool
     {
         private sealed class ReferenceCollection
         {
@@ -28,58 +28,37 @@ public static partial class ReferencePool
 
             public Type ReferenceType
             {
-                get
-                {
-                    return m_ReferenceType;
-                }
+                get { return m_ReferenceType; }
             }
 
             public int UnusedReferenceCount
             {
-                get
-                {
-                    return m_References.Count;
-                }
+                get { return m_References.Count; }
             }
 
             public int UsingReferenceCount
             {
-                get
-                {
-                    return m_UsingReferenceCount;
-                }
+                get { return m_UsingReferenceCount; }
             }
 
             public int AcquireReferenceCount
             {
-                get
-                {
-                    return m_AcquireReferenceCount;
-                }
+                get { return m_AcquireReferenceCount; }
             }
 
             public int ReleaseReferenceCount
             {
-                get
-                {
-                    return m_ReleaseReferenceCount;
-                }
+                get { return m_ReleaseReferenceCount; }
             }
 
             public int AddReferenceCount
             {
-                get
-                {
-                    return m_AddReferenceCount;
-                }
+                get { return m_AddReferenceCount; }
             }
 
             public int RemoveReferenceCount
             {
-                get
-                {
-                    return m_RemoveReferenceCount;
-                }
+                get { return m_RemoveReferenceCount; }
             }
 
             public T Acquire<T>() where T : class, IReference, new()
@@ -121,7 +100,7 @@ public static partial class ReferencePool
 
             public void Release(IReference reference)
             {
-                reference.Clear();
+                reference.OnRecycle();
                 lock (m_References)
                 {
                     if (m_EnableStrictCheck && m_References.Contains(reference))

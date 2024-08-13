@@ -93,7 +93,7 @@ namespace KC
         private int value;
         private int instanceIdValue;
         
-        private IdGenerator(){}
+   
 
         private uint TimeSince2022()
         {

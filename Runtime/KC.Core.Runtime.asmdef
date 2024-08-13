@@ -1,5 +1,5 @@
 {
-    "name": "KC.Core",
+    "name": "KC.Core.Runtime",
     "rootNamespace": "KC",
     "references": [],
     "includePlatforms": [],
