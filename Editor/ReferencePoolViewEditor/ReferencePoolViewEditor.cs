@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using static System.String;
 
 namespace KC
 {
@@ -19,7 +20,7 @@ namespace KC
             base.OnInspectorGUI();
             serializedObject.Update();
 
-            if (!EditorApplication.isPlaying)
+            if (!EditorApplication.isPlaying )
             {
                 return;
             }
@@ -74,10 +75,10 @@ namespace KC
 
                         if (GUILayout.Button("Export CSV Data"))
                         {
-                            string exportFileName = EditorUtility.SaveFilePanel("Export CSV Data", string.Empty,
-                                string.Format("Reference Pool Data - {0}.csv", assemblyReferencePoolInfo.Key),
-                                string.Empty);
-                            if (!string.IsNullOrEmpty(exportFileName))
+                            string exportFileName = EditorUtility.SaveFilePanel("Export CSV Data", Empty,
+                                Format("Reference Pool Data - {0}.csv", assemblyReferencePoolInfo.Key),
+                                Empty);
+                            if (!IsNullOrEmpty(exportFileName))
                             {
                                 try
                                 {
@@ -87,7 +88,7 @@ namespace KC
                                         "Class Name,Full Class Name,Unused,Using,Acquire,Release,Add,Remove";
                                     foreach (ReferencePoolInfo referencePoolInfo in assemblyReferencePoolInfo.Value)
                                     {
-                                        data[index++] = string.Format("{0},{1},{2},{3},{4},{5},{6},{7}",
+                                        data[index++] = Format("{0},{1},{2},{3},{4},{5},{6},{7}",
                                             referencePoolInfo.Type.Name, referencePoolInfo.Type.FullName,
                                             referencePoolInfo.UnusedReferenceCount,
                                             referencePoolInfo.UsingReferenceCount,
@@ -98,12 +99,12 @@ namespace KC
                                     }
 
                                     File.WriteAllLines(exportFileName, data, Encoding.UTF8);
-                                    Debug.Log(string.Format("Export reference pool CSV data to '{0}' success.",
+                                    Debug.Log(Format("Export reference pool CSV data to '{0}' success.",
                                         exportFileName));
                                 }
                                 catch (Exception exception)
                                 {
-                                    Debug.LogError(string.Format(
+                                    Debug.LogError(Format(
                                         "Export reference pool CSV data to '{0}' failure, exception is '{1}'.",
                                         exportFileName, exception));
                                 }
@@ -125,7 +126,7 @@ namespace KC
         {
             EditorGUILayout.LabelField(
                 _isShowFullClassName ? referencePoolInfo.Type.FullName : referencePoolInfo.Type.Name,
-                string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", referencePoolInfo.UnusedReferenceCount,
+                Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", referencePoolInfo.UnusedReferenceCount,
                     referencePoolInfo.UsingReferenceCount, referencePoolInfo.AcquireReferenceCount,
                     referencePoolInfo.ReleaseReferenceCount, referencePoolInfo.AddReferenceCount,
                     referencePoolInfo.RemoveReferenceCount));
@@ -134,8 +135,8 @@ namespace KC
         private int Comparison(ReferencePoolInfo a, ReferencePoolInfo b)
         {
             return _isShowFullClassName
-                ? String.Compare(a.Type.FullName, b.Type.FullName, StringComparison.Ordinal)
-                : String.Compare(a.Type.Name, b.Type.Name, StringComparison.Ordinal);
+                ? Compare(a.Type.FullName, b.Type.FullName, StringComparison.Ordinal)
+                : Compare(a.Type.Name, b.Type.Name, StringComparison.Ordinal);
         }
     }
 }
