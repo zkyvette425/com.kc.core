@@ -1,11 +1,13 @@
 {
-    "name": "com.kc.core",
-    "version": "0.0.1",
-    "displayName": "KC.Core",
-    "description": "KC核心,实现基础功能",
-
+	"name": "com.kc.core",
+	"displayName":"KC.Core",
+	"version": "0.1.0",
+	"unity": "2022.3",
+	"description": "KC核心,实现基础功能",
     "author": {
       "name": "KunZhou",
       "email": "450228418@qq.com"
-    }
-  }
+    },
+	"dependencies": {
+	}
+}
