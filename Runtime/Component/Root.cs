@@ -14,6 +14,18 @@ namespace KC
         
         public Root ParentRoot { get; set; }
         
+        public void Dispose()
+        {
+            if (Parent == null)
+            {
+                Destroy();
+            }
+            else
+            {
+                Parent.RemoveComponent(this);
+            }
+        }
+
         public int RootType { get;internal set; }
         
         public void Awake(int a)
@@ -63,7 +75,6 @@ namespace KC
                 _lateUpdateLoops.Enqueue(component);
             }
         }
-
-
+        
     }
 }

@@ -157,7 +157,7 @@ namespace KC
             ReferencePool.Release(component);
         }
 
-        private void Destroy()
+        protected void Destroy()
         {
 #if UNITY_EDITOR
             Object.Destroy(GameObject);
