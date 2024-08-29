@@ -1,7 +1,7 @@
 {
   "name": "com.kc.core",
   "displayName": "KC.Core",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "unity": "2022.3",
   "description": "KC\u6838\u5fc3,\u5b9e\u73b0\u57fa\u7840\u529f\u80fd",
   "author": "KunZhou <450228418@qq.com>",
@@ -20,8 +20,5 @@
   "bugs": {
     "url": "https://github.com/zkyvette425/com.kc.core/issues"
   },
-  "homepage": "https://github.com/zkyvette425/com.kc.core#readme",
-  "dependencies": {
-    "com.unity.mathematics": "1.2.6"
-  }
+  "homepage": "https://github.com/zkyvette425/com.kc.core#readme"
 }
