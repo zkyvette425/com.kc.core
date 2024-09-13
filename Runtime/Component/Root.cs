@@ -18,7 +18,7 @@ namespace KC
         {
             if (Parent == null)
             {
-                Destroy();
+                DestroyThis();
             }
             else
             {

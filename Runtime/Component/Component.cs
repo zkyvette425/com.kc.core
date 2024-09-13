@@ -153,11 +153,12 @@ namespace KC
                 _children = null;
             }
             
-            component.Destroy();
+            component.DestroyThis();
             ReferencePool.Release(component);
         }
+        
 
-        protected void Destroy()
+        internal void DestroyThis()
         {
 #if UNITY_EDITOR
             Object.Destroy(GameObject);
@@ -168,7 +169,7 @@ namespace KC
             {
                 foreach (var children in _children.Values)
                 {
-                    children.Destroy();
+                    children.DestroyThis();
                     ReferencePool.Release(children);
                 }
                 

@@ -1,9 +1,9 @@
 {
   "name": "com.kc.core",
   "displayName": "KC.Core",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "unity": "2022.3",
-  "description": "KC框架核心",
+  "description": "KC\u6846\u67b6\u6838\u5fc3",
   "author": "KunZhou <450228418@qq.com>",
   "main": "index.js",
   "scripts": {
