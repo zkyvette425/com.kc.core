@@ -9,7 +9,7 @@ using Component = KC.Component;
 namespace ET
 {
     [TypeDrawer]
-    public class EntityRefTypeDrawer: ITypeDrawer
+    public class ComponentRefTypeDrawer: ITypeDrawer
     {
         public bool HandlesType(Type type)
         {
@@ -28,7 +28,7 @@ namespace ET
 
         public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
         {
-            FieldInfo fieldInfo = memberType.GetField("entity", BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo fieldInfo = memberType.GetField("_component", BindingFlags.NonPublic | BindingFlags.Instance);
             Component entity = (Component)fieldInfo.GetValue(value);
             GameObject go = entity?.GameObject;
             EditorGUILayout.ObjectField(memberName, go, memberType, true);
