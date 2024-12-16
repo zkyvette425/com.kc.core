@@ -1,7 +1,7 @@
 {
   "name": "com.kc.core",
   "displayName": "KC.Core",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "unity": "2022.3",
   "description": "KC\u6846\u67b6\u6838\u5fc3",
   "author": "KunZhou <450228418@qq.com>",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/zkyvette425/com.kc.core/issues"
   },
-  "homepage": "https://github.com/zkyvette425/com.kc.core#readme"
+  "homepage": "https://github.com/zkyvette425/com.kc.core#readme",
+  "dependencies": {
+    "com.cysharp.unitask": "2.5.10"
+  }
 }

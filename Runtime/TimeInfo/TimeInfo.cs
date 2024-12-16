@@ -4,28 +4,28 @@ namespace KC
 {
     public class TimeInfo : Singleton<TimeInfo>,ISingletonAwake
     {
-        private int timeZone;
+        private int _timeZone;
         
         public int TimeZone
         {
-            get => this.timeZone;
+            get => this._timeZone;
             set
             {
-                this.timeZone = value;
-                dt = dt1970.AddHours(TimeZone);
+                this._timeZone = value;
+                _dt = _dt1970.AddHours(TimeZone);
             }
         }
         
-        private DateTime dt1970;
-        private DateTime dt;
+        private DateTime _dt1970;
+        private DateTime _dt;
         
         public long FrameTime { get; private set; }
         
         
         public void Awake()
         {
-            this.dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            this.dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            this._dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            this._dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             this.FrameTime = this.ClientNow();
         }
 
@@ -39,14 +39,15 @@ namespace KC
         /// </summary>  
         public DateTime ToDateTime(long timeStamp)
         {
-            return dt.AddTicks(timeStamp * 10000);
+            return _dt.AddTicks(timeStamp * 10000);
         }
         
         // 线程安全
         public long ClientNow()
         {
-            return (DateTime.UtcNow.Ticks - this.dt1970.Ticks) / 10000;
+            return (DateTime.UtcNow.Ticks - this._dt1970.Ticks) / 10000;
         }
+        
         
         public long ClientFrameTime()
         {
@@ -55,7 +56,7 @@ namespace KC
         
         public long Transition(DateTime d)
         {
-            return (d.Ticks - dt.Ticks) / 10000;
+            return (d.Ticks - _dt.Ticks) / 10000;
         }
     }
 }
