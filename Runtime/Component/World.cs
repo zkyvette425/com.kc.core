@@ -43,5 +43,16 @@ namespace KC
                 _zoneQueue.Enqueue(root);
             }
         }
+
+        public static void Destroy()
+        {
+            int count = _zoneQueue.Count;
+            while (count-- > 0)
+            {
+                Root root = _zoneQueue.Dequeue();
+                root?.Dispose();
+            }
+            _zoneQueue.Clear();
+        }
     }
 }

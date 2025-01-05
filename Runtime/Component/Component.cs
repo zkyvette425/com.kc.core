@@ -152,8 +152,11 @@ namespace KC
             {
                 _children = null;
             }
-            
             component.DestroyThis();
+            if (component is IRoot)
+            {
+                return;
+            }
             ReferencePool.Release(component);
         }
         
@@ -170,6 +173,10 @@ namespace KC
                 foreach (var children in _children.Values)
                 {
                     children.DestroyThis();
+                    if (children is IRoot)
+                    {
+                        continue;
+                    }
                     ReferencePool.Release(children);
                 }
                 

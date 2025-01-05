@@ -41,9 +41,8 @@ namespace KC
             async UniTaskVoid CreateTask(CancellationToken token)
             {
                 int runCount = 0;
-                while (!token.IsCancellationRequested)
+                while (token.IsCancellationRequested == false)
                 {
-                    token.ThrowIfCancellationRequested();
                     await UniTask.Delay(repeatTime, ignoreTimeScale, delayTiming, token, cancelImmediately);
                     onComplete?.Invoke(++runCount);
                 }
@@ -71,7 +70,6 @@ namespace KC
                 int runCount = 0;
                 while (!token.IsCancellationRequested)
                 {
-                    token.ThrowIfCancellationRequested();
                     await UniTask.DelayFrame(delayFrameCount, delayTiming, token, cancelImmediately);
                     onComplete?.Invoke(++runCount);
                 }
